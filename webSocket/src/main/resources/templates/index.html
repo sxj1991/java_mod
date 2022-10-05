@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>My WebSocket</title>
+    <script src="../static/js/jquery.min.js"></script>
+</head>
+
+<body>
+用户连接数:<p id="connect"></p>
+<br>
+<input id="cname" type="text" /><button onclick="concat()">加入聊天</button><br>
+<input id="sname" type="text" /><button>用户姓名</button><br>
+<input id="text" type="text" /><button onclick="send()">发送信息</button>
+<button onclick="closeWebSocket()">退出聊天</button>
+<div id="message"></div>
+</body>
+
+<script type="text/javascript">
+
+    var websocket = null;
+
+    function concat() {
+        var cname = document.getElementById('cname').value;
+        //判断当前浏览器是否支持WebSocket
+        if('WebSocket' in window){
+            websocket = new WebSocket("ws://localhost:8084/websocketMap/"+cname);
+        }
+        else{
+            alert('Not support websocket')
+        }
+
+        //连接发生错误的回调方法
+        websocket.onerror = function(){
+            setMessageInnerHTML("socket连接失败");
+        };
+
+        //连接成功建立的回调方法
+        websocket.onopen = function(event){
+            setMessageInnerHTML("socket连接已打开");
+        }
+
+        //接收到消息的回调方法
+        websocket.onmessage = function(event){
+            console.log(event);
+            var regPos = /^[0-9]+.?[0-9]*/;
+            if(regPos.test(event.data)){
+                setConnectInnerHTML(event.data);
+            }else {
+                setMessageInnerHTML(event.data);
+            }
+
+
+        }
+
+
+        //连接关闭的回调方法
+        websocket.onclose = function(){
+            setMessageInnerHTML("socket连接已关闭");
+        }
+
+        //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+        window.onbeforeunload = function(){
+            websocket.close();
+        }
+    }
+
+    //将消息显示在网页上
+    function setMessageInnerHTML(innerHTML){
+        document.getElementById('message').innerHTML += innerHTML +"<br/>";
+    }
+
+    function setConnectInnerHTML(innerHTML){
+        document.getElementById('connect').innerHTML = innerHTML +"<br/>";
+    }
+
+    //关闭连接
+    function closeWebSocket(){
+        websocket.close();
+    }
+
+    //发送消息
+    // function send(){
+    //     var message = document.getElementById('text').value;
+    //     console.log(message);
+    //     websocket.send(message);
+    // }
+
+   function send(){
+       var message = document.getElementById('text').value;
+
+       var sname = document.getElementById('sname').value;
+            $.ajax({
+                method: 'get',
+                url: 'http://localhost:8084/socket/push/'+sname+'/'+message,
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+</script>
+</html>

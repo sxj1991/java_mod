@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<strong><p>websocket demo</p></strong>
+<br/>
+<input id="text" type="text" />
+<button onclick="sendMsg()"> Send </button>
+<button onclick="closeWS()"> Close </button>
+<div id="message">  </div>
+
+</body>
+<script type="text/javascript">
+
+  var token = null; //ws会话标识符
+  var websocket = null;
+  var websocket_url = "ws://localhost:8084/web";
+
+  if('WebSocket' in window){
+    token = getToken();
+    websocket = new WebSocket(websocket_url+"/"+token);
+  }else {
+    alert("该浏览器不支持websocket！");
+  }
+
+  if(websocket != null){
+    //连接成功建立的回调方法
+    websocket.onopen = function(event){
+      showMsg("websocket连接成功，您的token是："+token);
+    };
+
+    //接收到消息的回调方法
+    websocket.onmessage = function(event){
+      if(typeof event.data == "String" || typeof event.data == "string"){
+        showMsg("从服务端接收到消息："+event.data);
+      }else{
+        showMsg("从服务端收到错误的消息类型："+typeof event.data);
+      }
+
+    };
+
+    //连接关闭的回调方法
+    websocket.onclose = function(){
+      showMsg("websocket连接关闭。");
+      closeWS();
+    };
+
+    //连接发生错误的回调方法
+    websocket.onerror = function(){
+      showMsg("websocket连接出现错误！");
+      closeWS();
+    };
+  }
+
+
+  //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+  window.onbeforeunload = function(){
+    console.log("窗口状态发生变化，websocket连接关闭。");
+    closeWS();
+  };
+
+  //依据时间戳获取一个token并简单地混淆
+  function getToken() {
+    var timestamp = Date.parse(new Date())/1000;
+    return String(timestamp*7+456);
+  }
+
+  //将消息显示在网页上
+  function showMsg(msg){
+    document.getElementById('message').innerHTML += (msg+'<br/>');
+  }
+
+  //发送消息
+  function sendMsg(){
+    var message = document.getElementById('text').value;
+    websocket.send(message);
+  }
+
+  //关闭连接
+  function closeWS() {
+    websocket.close();
+  }
+
+</script>
+</html>
