@@ -38,7 +38,7 @@ public class SimpleTrigger {
             Trigger trigger = triggers.getTriggerBuilder()
                     .withIdentity("trigger", "triggerGroup")
                     .startNow()
-                    .withSchedule(CronScheduleBuilder.cronSchedule("*/5 * * * * ? "))
+                    .withSchedule(CronScheduleBuilder.cronSchedule("0 */5 * * * ?"))
                     .build();
             scheduler.rescheduleJob(triggerKeys, trigger);
             scheduler.start();

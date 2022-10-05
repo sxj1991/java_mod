@@ -31,7 +31,7 @@ public abstract class AbstractQuartzJob implements Job
         SysJob sysJob = new SysJob();
         // 获取jobDetail.getJobDataMap().put(ScheduleConstants.TASK_PROPERTIES, job)放入的sysjob对象
         SysJob taskData = (SysJob) context.getMergedJobDataMap().get(ScheduleConstants.TASK_PROPERTIES);
-        BeanUtils.copyProperties(sysJob,taskData);
+        BeanUtils.copyProperties(taskData,sysJob);
         try
         {
 
