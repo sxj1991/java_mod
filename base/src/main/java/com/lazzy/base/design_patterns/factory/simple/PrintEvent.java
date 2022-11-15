@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class PrintEvent implements IEvent{
 
     public void print(){
-        System.out.println("this is print method");
+        System.out.println("this is simple factory print method");
     }
 }

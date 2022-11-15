@@ -62,7 +62,7 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<OrderS
                 .withExternal()
                 .source(OrderStatusEnum.GENERATE)
                 .target(OrderStatusEnum.FEED_BACKED)
-                .event(OrderEventEnum.CHECK_FAIL)
+                .event(OrderEventEnum.ACCEPT_ORDER)
                 .and()
 
                 // 2.定价发布事件

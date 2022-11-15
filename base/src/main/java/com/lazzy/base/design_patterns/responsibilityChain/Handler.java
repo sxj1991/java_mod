@@ -7,11 +7,10 @@ import com.lazzy.base.design_patterns.responsibilityChain.vo.LoginInfo;
 /**
  * 单向责任链模式实现
  *
- * @param <T>
  */
-public abstract class Handler<T> {
+public abstract class Handler {
 
-    protected Handler<T> next;
+    protected Handler next;
 
     /**
      * 服务执行的方法
@@ -30,13 +29,12 @@ public abstract class Handler<T> {
     /**
      * 内部类构建责任链表
      *
-     * @param <T>
      */
-    public static class Builder<T> {
-        private Handler<T> head;
-        private Handler<T> tail;
+    public static class Builder{
+        private Handler head;
+        private Handler tail;
 
-        public  Builder<T> addHandler(Handler handler) {
+        public  Builder addHandler(Handler handler) {
             if (ObjectUtil.isEmpty(this.head)) {
                 this.head = handler;
                 this.tail = this.head;

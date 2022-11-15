@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class UploadImageListener implements ApplicationListener<UploadImageEvent> {
+public class UploadImageMoreListener implements ApplicationListener<UploadImageEvent> {
 
     @Override
     @Async
     public void onApplicationEvent(UploadImageEvent event) {
         if(event.getSource() instanceof ImageInfo){
-            log.info("UploadImageListener获取上传文件信息:"+event.getSource());
+            log.info("UploadImageMoreListener获取上传文件信息:"+event.getSource());
         }
 
     }

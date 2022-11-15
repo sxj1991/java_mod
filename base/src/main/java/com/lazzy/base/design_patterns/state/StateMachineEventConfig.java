@@ -8,7 +8,7 @@ import org.springframework.statemachine.annotation.WithStateMachine;
 @Slf4j
 public class StateMachineEventConfig {
 
-   // Spring StateMachine 提供了注解配置实现方式，所有 StateMachineListener
+    // Spring StateMachine 提供了注解配置实现方式，所有 StateMachineListener
     // 接口中定义的事件都能通过注解的方式来进行配置实现。这里以连接事件为案例，
     // @OnTransition 中 source 指定原始状态，target 指定目标状态，当事件触发时将会被监听到从而调用 connect() 方法。
 
