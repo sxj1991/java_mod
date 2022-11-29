@@ -1,5 +1,6 @@
 package com.lazzy.mongodb.controller;
 
+import com.lazzy.base.sdk.LogExcute;
 import com.lazzy.mongodb.dao.UserDao;
 import com.lazzy.mongodb.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class UserController {
     }
 
     @GetMapping("u")
+    @LogExcute
     public List<Student> query(){
 
         return userDao.findAll();
