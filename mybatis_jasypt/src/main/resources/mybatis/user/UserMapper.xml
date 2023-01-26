@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.dao.UserMapper">
+
+    <resultMap type="com.example.mybatis.entity.Student" id="UserResult">
+        <id     property="id"           column="user_id"      />
+        <result property="userName"     column="user_name"    />
+        <result property="password"     column="password"     />
+    </resultMap>
+
+	
+	<sql id="SelectUser">
+        select u.id, u.user_name, u.password
+        from t_user u
+    </sql>
+	
+	<select id="queryList" resultMap="UserResult">
+		<include refid="SelectUser"/>
+	</select>
+    
+    
+	
+</mapper> 
