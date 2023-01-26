@@ -1,0 +1,33 @@
+type Query {
+    users: [User!]!
+}
+
+type Mutation {
+    createUser(userInput: UserInput!): Resp!
+}
+
+type User {
+    id: ID!
+    name: String!
+    password: String
+    clazz: Clazz
+    createHobby: [Hobby!]
+}
+
+type Clazz{
+    info: String!
+}
+
+type Hobby {
+    name: String
+}
+
+input UserInput {
+    name: String!
+    password: String!
+}
+
+type Resp{
+    msg: String
+    code: Int
+}
