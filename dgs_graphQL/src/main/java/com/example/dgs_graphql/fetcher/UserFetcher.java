@@ -6,6 +6,8 @@ import com.example.dgs_graphql.model.Hobby;
 import com.example.dgs_graphql.model.User;
 import com.example.dgs_graphql.model.UserInput;
 import com.netflix.graphql.dgs.*;
+import com.netflix.graphql.dgs.context.DgsContext;
+import com.netflix.graphql.dgs.context.DgsCustomContextBuilderWithRequest;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public class UserFetcher {
 
     @DgsData(parentType = "User", field = "createHobby")
     public List<Hobby> createHobby(DgsDataFetchingEnvironment dfe){
+        // DgsCustomContextBuilderWithRequest 实现build接口方法 设置上下文信息 可用于用户认证
+        // DgsContext.getCustomContext(dfe) 获取 DgsCustomContextBuilderWithRequest 返回的对象信息;
         User user = dfe.getSource();
         return user.getHobbies();
     }
