@@ -1,4 +1,4 @@
-package com.xjsun.miniio;
+package com.xjsun.minIO;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

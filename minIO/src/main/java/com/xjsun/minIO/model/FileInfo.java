@@ -1,4 +1,4 @@
-package com.xjsun.miniio.model;
+package com.xjsun.minIO.model;
 
 import lombok.Data;
 

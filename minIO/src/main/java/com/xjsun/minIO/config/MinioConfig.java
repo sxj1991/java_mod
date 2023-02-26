@@ -1,4 +1,4 @@
-package com.xjsun.miniio.config;
+package com.xjsun.minIO.config;
 
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Value;

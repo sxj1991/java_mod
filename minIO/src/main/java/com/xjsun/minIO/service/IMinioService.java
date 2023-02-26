@@ -1,6 +1,6 @@
-package com.xjsun.miniio.service;
+package com.xjsun.minIO.service;
 
-import com.xjsun.miniio.model.FileInfo;
+import com.xjsun.minIO.model.FileInfo;
 
 import java.io.InputStream;
 import java.util.List;

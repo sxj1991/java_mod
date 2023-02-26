@@ -1,18 +1,16 @@
-package com.xjsun.miniio.controller;
+package com.xjsun.minIO.controller;
 
 
-import com.xjsun.miniio.model.FileInfo;
-import com.xjsun.miniio.model.Response;
-import com.xjsun.miniio.service.impl.MinioService;
+import com.xjsun.minIO.model.FileInfo;
+import com.xjsun.minIO.model.Response;
+import com.xjsun.minIO.service.impl.MinioService;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;

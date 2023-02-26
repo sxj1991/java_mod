@@ -1,7 +1,7 @@
-package com.xjsun.miniio.service.impl;
+package com.xjsun.minIO.service.impl;
 
-import com.xjsun.miniio.model.FileInfo;
-import com.xjsun.miniio.service.IMinioService;
+import com.xjsun.minIO.model.FileInfo;
+import com.xjsun.minIO.service.IMinioService;
 import io.minio.*;
 import io.minio.http.Method;
 import io.minio.messages.Bucket;
