@@ -23,10 +23,6 @@ public class MinioService implements IMinioService {
         this.minioClient = minioClient;
     }
 
-
-    /**
-     * 创建一个桶
-     */
     public void createBucket(String bucket) throws Exception {
         boolean found = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucket).build());
         if (!found) {
