@@ -1,4 +1,4 @@
-package com.lazzy.base.generics;
+package com.lazzy.base.se.generics;
 
 public class LinkMessage implements MessageTransfer<String>{
     @Override

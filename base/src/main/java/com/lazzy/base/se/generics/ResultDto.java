@@ -1,4 +1,4 @@
-package com.lazzy.base.generics;
+package com.lazzy.base.se.generics;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.lazzy.base.message_sensitive;
 
-import com.lazzy.base.generics.ResultDto;
+import com.lazzy.base.se.generics.ResultDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

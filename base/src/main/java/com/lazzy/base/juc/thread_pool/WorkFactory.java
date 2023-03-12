@@ -1,4 +1,4 @@
-package com.lazzy.base.thread_pool;
+package com.lazzy.base.juc.thread_pool;
 
 import java.util.concurrent.*;
 
