@@ -1,6 +1,9 @@
-package com.lazzy.base.token;
+package com.lazzy.base.web.controller;
 
 import com.lazzy.base.sdk.LogExcute;
+import com.lazzy.base.sdk.PermissionCheck;
+import com.lazzy.base.token.JwtToken;
+import com.lazzy.base.token.LocalCache;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +14,7 @@ public class TokenController {
 
     @GetMapping("createTk")
     @LogExcute
+    @PermissionCheck("@auth.permission('system:permission:add')")
     public JwtToken create(){
         String id = "1";
         String token = JwtToken.Token.createToken(id);
