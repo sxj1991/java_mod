@@ -1,0 +1,8 @@
+server:
+  port: 8099
+
+# 自定义对象存储的连接信息
+minio:
+  url: http://ip:port  #对象存储服务的URL
+  accessKey: username #账户
+  secretKey: password #密码
