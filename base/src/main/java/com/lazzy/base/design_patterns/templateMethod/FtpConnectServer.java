@@ -7,9 +7,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class FtpConnectServer extends AbstractConnectServer{
+    public FtpConnectServer(String userName, String password) {
+        super(userName, password);
+    }
+
     @Override
-    protected void login() {
-        log.info("ftp连接服务器");
+    protected void login(String userName, String password) {
+        log.info("ftp连接服务器{}-{}",userName,password);
     }
 
     @Override

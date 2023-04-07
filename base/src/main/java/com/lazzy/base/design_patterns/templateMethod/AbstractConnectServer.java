@@ -10,11 +10,21 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public abstract class AbstractConnectServer {
+    private String userName;
+
+    private String password;
+
+    public AbstractConnectServer(String userName, String password){
+        this.userName = userName;
+        this.password = password;
+    }
+
+
     /**
      * 模板方法--指定流程
      */
     public void toServerCommand(String command){
-        login();
+        login(userName, password);
         transToServer(command);
         readFromServer();
         logout();
@@ -23,7 +33,7 @@ public abstract class AbstractConnectServer {
     /**
      * 连接远程终端
      */
-    protected abstract void login();
+    protected abstract void login(String userName, String password);
 
     /**
      * 推出远程终端

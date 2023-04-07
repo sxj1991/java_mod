@@ -169,9 +169,9 @@ public class DesignTests {
      */
     @Test
     public void templateMethod(){
-        AbstractConnectServer connectServerSftp =  new SftpConnectServer();
+        AbstractConnectServer connectServerSftp =  new SftpConnectServer("sftp-user","123");
         connectServerSftp.toServerCommand("sftp ls -a");
-        AbstractConnectServer connectServerFtp =  new FtpConnectServer();
+        AbstractConnectServer connectServerFtp =  new FtpConnectServer("ftp-user","123");
         connectServerFtp.toServerCommand("ftp ls -a");
     }
 
