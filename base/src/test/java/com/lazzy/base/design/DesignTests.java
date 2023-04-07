@@ -18,6 +18,9 @@ import com.lazzy.base.design_patterns.state.OrderStatusEnum;
 import com.lazzy.base.design_patterns.strategy.domain.Message;
 import com.lazzy.base.design_patterns.strategy.factory.MessageServiceStrategyFactory;
 import com.lazzy.base.design_patterns.strategy.message.MessageProcess;
+import com.lazzy.base.design_patterns.templateMethod.AbstractConnectServer;
+import com.lazzy.base.design_patterns.templateMethod.FtpConnectServer;
+import com.lazzy.base.design_patterns.templateMethod.SftpConnectServer;
 import com.lazzy.base.web.controller.TokenController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -158,6 +161,18 @@ public class DesignTests {
     @Test
     public void proxy(){
         System.out.println(tokenController.create().getToken());
+    }
+
+    /**
+     * 模板方法模式测试
+     * 简单模拟过程--没有真正实现里面逻辑
+     */
+    @Test
+    public void templateMethod(){
+        AbstractConnectServer connectServerSftp =  new SftpConnectServer();
+        connectServerSftp.toServerCommand("sftp ls -a");
+        AbstractConnectServer connectServerFtp =  new FtpConnectServer();
+        connectServerFtp.toServerCommand("ftp ls -a");
     }
 
 
