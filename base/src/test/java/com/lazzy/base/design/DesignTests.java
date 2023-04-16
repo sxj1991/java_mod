@@ -2,6 +2,10 @@ package com.lazzy.base.design;
 
 import com.lazzy.base.design_patterns.Iterator.Iterator;
 import com.lazzy.base.design_patterns.Iterator.StudentList;
+import com.lazzy.base.design_patterns.adapter.IPhoneSend;
+import com.lazzy.base.design_patterns.adapter.MailSend;
+import com.lazzy.base.design_patterns.adapter.PhoneAdapter;
+import com.lazzy.base.design_patterns.adapter.PhoneSend;
 import com.lazzy.base.design_patterns.decorator.PenTypeDecorator;
 import com.lazzy.base.design_patterns.decorator.TestType;
 import com.lazzy.base.design_patterns.decorator.Type;
@@ -192,6 +196,15 @@ public class DesignTests {
             String next = iterator.next();
             System.out.println(next);
         }
+    }
+
+    /**
+     * 适配器模式
+     */
+    @Test
+    public void adapter(){
+        IPhoneSend send = new PhoneAdapter(new MailSend());
+        send.send(180000789);
     }
 
 
