@@ -28,8 +28,8 @@ public class DataSourceAspect
 {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("@annotation(com.lazzy.dynamic_datas_source_jpa.annotation.DataSource)"
-            + "|| @within(com.lazzy.dynamic_datas_source_jpa.annotation.DataSource)")
+    @Pointcut("@annotation(com.lazzy.doublesourcejpa.annotation.DataSource)"
+            + "|| @within(com.lazzy.doublesourcejpa.annotation.DataSource)")
     public void dsPointCut()
     {
 

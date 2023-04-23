@@ -29,7 +29,7 @@ public class FindController {
 
 
     @GetMapping("n")
-    public List<Note> findNotes(){
-        return noteDao.findAll();
+    public List<User> findNotes(){
+        return userDao.findAll();
     }
 }

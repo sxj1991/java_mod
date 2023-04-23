@@ -2,9 +2,9 @@ package com.lazzy.doublesourcejpa.datasource.config;
 
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.lazzy.dynamic_datas_source_jpa.datasource.DynamicDataSource;
-import com.lazzy.dynamic_datas_source_jpa.enums.DataSourceType;
-import com.lazzy.dynamic_datas_source_jpa.util.SpringUtils;
+import com.lazzy.doublesourcejpa.datasource.DynamicDataSource;
+import com.lazzy.doublesourcejpa.enums.DataSourceType;
+import com.lazzy.doublesourcejpa.util.SpringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
