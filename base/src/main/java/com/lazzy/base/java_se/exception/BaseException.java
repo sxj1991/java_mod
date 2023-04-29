@@ -10,8 +10,8 @@ public class BaseException {
      * 非受检异常：用户无需处理，程序异常会报错
      */
     public static class BaseExceptionRuntime extends RuntimeException{
-        public BaseExceptionRuntime(String message) {
-            super(message);
+        public BaseExceptionRuntime(String message, Throwable e) {
+            super(message, e);
         }
     }
     /**

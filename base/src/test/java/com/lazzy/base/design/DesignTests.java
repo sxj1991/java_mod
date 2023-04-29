@@ -1,5 +1,11 @@
 package com.lazzy.base.design;
 
+import com.lazzy.base.design_patterns.Iterator.Iterator;
+import com.lazzy.base.design_patterns.Iterator.StudentList;
+import com.lazzy.base.design_patterns.adapter.IPhoneSend;
+import com.lazzy.base.design_patterns.adapter.MailSend;
+import com.lazzy.base.design_patterns.adapter.PhoneAdapter;
+import com.lazzy.base.design_patterns.adapter.PhoneSend;
 import com.lazzy.base.design_patterns.decorator.PenTypeDecorator;
 import com.lazzy.base.design_patterns.decorator.TestType;
 import com.lazzy.base.design_patterns.decorator.Type;
@@ -31,6 +37,7 @@ import org.springframework.statemachine.StateMachine;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * java 经典设计模式 23种测试
@@ -173,6 +180,31 @@ public class DesignTests {
         connectServerSftp.toServerCommand("sftp ls -a");
         AbstractConnectServer connectServerFtp =  new FtpConnectServer("ftp-user","123");
         connectServerFtp.toServerCommand("ftp ls -a");
+    }
+
+    /**
+     * 迭代器模式
+     */
+    @Test
+    public void iterator(){
+        List<String> names = new ArrayList<>();
+        StudentList<String> stu = new StudentList<>(names);
+        stu.add("zhangsan");
+        stu.add("lisi");
+        Iterator<String> iterator = stu.iterator();
+        while (iterator.hasNext()){
+            String next = iterator.next();
+            System.out.println(next);
+        }
+    }
+
+    /**
+     * 适配器模式
+     */
+    @Test
+    public void adapter(){
+        IPhoneSend send = new PhoneAdapter(new MailSend());
+        send.send(180000789);
     }
 
 
