@@ -58,7 +58,7 @@ public final class JasyptUtils {
     }
 
     public static void main(String[] args) {
-       encrypt("12345678");
-       decrypt("zfR/yUxcptzW1ZGJQMB1o5KYQqcGQPail09cPaMFgZm1ZuZiFhOPatBS3UrnHJ/b");
+       encrypt("qazwsxyhbsda123");
+       decrypt("GNgYRuvjZwhiigFsxVSNPGYoFxk83b79ieII6buYvvhyTZ9vblMJe8+XN9Iq7W+Y");
     }
 }

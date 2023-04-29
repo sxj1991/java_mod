@@ -11,10 +11,16 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://ip:port/db?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    username: username
-    password: ENC(password)
     druid:
+      master:
+        url: jdbc:mysql://8.136.0.80:3355/db_notebook?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        password: ENC(GNgYRuvjZwhiigFsxVSNPGYoFxk83b79ieII6buYvvhyTZ9vblMJe8+XN9Iq7W+Y)
+        username: root
+      slave:
+        enabled: true
+        url: jdbc:mysql://8.136.0.80:3355/db_template?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        password: ENC(GNgYRuvjZwhiigFsxVSNPGYoFxk83b79ieII6buYvvhyTZ9vblMJe8+XN9Iq7W+Y)
+        username: root
       # 初始连接数
       initialSize: 5
       # 最小连接池数量

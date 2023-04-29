@@ -1,6 +1,8 @@
 package com.lazzy.doublesourcejpa.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Column;
@@ -12,6 +14,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tb_user")
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class User implements Serializable {
 

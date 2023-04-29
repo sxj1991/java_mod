@@ -30,7 +30,9 @@ public class DynamicDataSourceContextHolder
      */
     public static String getDataSourceType()
     {
-        return CONTEXT_HOLDER.get();
+        String sourceType = CONTEXT_HOLDER.get();
+        log.info("获取{}数据源", sourceType);
+        return sourceType;
     }
 
     /**
