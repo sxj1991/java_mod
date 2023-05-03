@@ -8,4 +8,9 @@
 >
 > ​       项目列表包含：23种设计模式java实现，redis集成，neo4j，webSocket，avticti工作流，security安全框架，jwt-token，quartz定时器
 
+---
+
+### 项目模块介绍
+
+JAVA 基础知识：[Java Base](/base/README.md)
 
