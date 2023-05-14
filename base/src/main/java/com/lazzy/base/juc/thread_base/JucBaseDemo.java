@@ -13,6 +13,9 @@ public class JucBaseDemo {
      * 3.线程并发：原子性（对于共享变量的操作要么全部执行，要么全部不执行，需要同步操作），
      *           有序性（线程执行不保证有序，需要同步操作），
      *           可见性（线程间声明的变量值是不可见的，需要关键字volatile声明）
+     * 4.并发： 同一时间段**处理**多件事情的能力
+     *   并行： 同一时间段**执行**多件事的能力
+     * 5.线程 wait notifyAll park unpark sleep 线程间等待唤醒操作
      */
     public void threadDemo(){
         // 1. 创建一个新线程，重新Runnable接口run方法
@@ -77,38 +80,5 @@ public class JucBaseDemo {
         t1.interrupt();
     }
 
-    /**
-     * 线程两阶段终止模式
-     * 一个线程控制另一个线程的启动和终止（该模式只是优雅地关闭线程或其他长时间运行的进程的众多方法之一）
-     * 例如采集信息，监控线程活动，可随时动态停止启动
-     */
-    // 采集线程
-    private Thread rptThread;
-    public void TwoPhaseTerminationStart(){
-        rptThread = new Thread(()->{
-            Thread currentThread= Thread.currentThread();
-            // 采集线程开始工作
-            while (true){
-                if (currentThread.isInterrupted()){
-                    System.out.println("采集线程工作结束...处理结束善后");
-                }
-                // 线程睡眠
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    // 异常会清空打断标记 重新打标记
-                    currentThread.interrupt();
-                }
-            }
-        });
-
-        rptThread.start();
-    }
-
-    public void TwoPhaseTerminationStop(){
-       // 关闭采集线程活动
-        rptThread.interrupt();
-    }
 
 }
