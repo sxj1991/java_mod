@@ -3,6 +3,7 @@ package com.xjsun.swagger.config;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -17,8 +18,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * xjsun
  * swagger配置类 配置扫描的路径和基础信息
+ * 启动报错 ： 使用EnableWebMvc注解 启用Spring MVC框架的默认配置或者配置文件配置匹配信息
+ *（目的是解决因为springboot新版本的路径匹配使用了PathPatternParser，而swagger一直没有更新，还使用的AntPathMatcher）
  */
 @Configuration
 @EnableOpenApi
