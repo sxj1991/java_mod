@@ -1,4 +1,4 @@
-package com.lazzy.base.web.controller;
+package com.lazzy.base.auth.controller;
 
 import com.lazzy.base.sdk.LogExcute;
 import com.lazzy.base.sdk.PermissionCheck;

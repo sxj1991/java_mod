@@ -26,7 +26,7 @@ import com.lazzy.base.designPatterns.strategy.message.MessageProcess;
 import com.lazzy.base.designPatterns.templateMethod.AbstractConnectServer;
 import com.lazzy.base.designPatterns.templateMethod.FtpConnectServer;
 import com.lazzy.base.designPatterns.templateMethod.SftpConnectServer;
-import com.lazzy.base.web.controller.TokenController;
+import com.lazzy.base.auth.controller.TokenController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

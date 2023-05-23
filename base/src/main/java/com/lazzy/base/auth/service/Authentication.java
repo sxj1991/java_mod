@@ -1,6 +1,5 @@
-package com.lazzy.base.web.service;
+package com.lazzy.base.auth.service;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 @Component(value ="auth")
 public class Authentication {

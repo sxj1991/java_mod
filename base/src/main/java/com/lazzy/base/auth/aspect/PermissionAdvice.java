@@ -1,7 +1,7 @@
-package com.lazzy.base.designPatterns.proxy;
+package com.lazzy.base.auth.aspect;
 
 import com.lazzy.base.sdk.PermissionCheck;
-import com.lazzy.base.web.service.Authentication;
+import com.lazzy.base.auth.service.Authentication;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -24,7 +24,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 @Aspect
 @Component
 @Order(1)
-@ComponentScan(value = {"com.lazzy.base.web.service"})
+@ComponentScan(value = {"com.lazzy.base.auth.service"})
 public class PermissionAdvice {
 
     @Pointcut("@annotation(com.lazzy.base.sdk.PermissionCheck)")
