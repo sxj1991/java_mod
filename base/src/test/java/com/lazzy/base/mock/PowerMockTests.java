@@ -2,7 +2,8 @@ package com.lazzy.base.mock;
 
 import com.lazzy.base.BaseApplication;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 
@@ -44,6 +45,7 @@ public class PowerMockTests {
             // 参数必须一致
             Boolean test = mock.isEmpty("bool");
             log.info("res:{}", test);
+            Assertions.assertTrue(test);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -58,11 +60,12 @@ public class PowerMockTests {
             // 如果静态方法没有返回值 则不用调用when方法
             PowerMockito.mockStatic(StrPowerMock.class);
             // 静态方法mock 返回值
-            PowerMockito.when(StrPowerMock.staticHasThrowStr()).thenReturn("test");
+            PowerMockito.when(StrPowerMock.staticHasThrowStr()).thenReturn("mock静态方法返回数据");
             StrPowerService strPowerService = new StrPowerService();
             // 获取mock的返回值并输出日志
             String str = strPowerService.getThrow();
             log.info("测试完毕>>>>>>{}",str);
+            Assertions.assertEquals("mock静态方法返回数据",str);
         }catch (Exception e){
             e.printStackTrace();
         }

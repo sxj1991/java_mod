@@ -2,6 +2,7 @@ package com.lazzy.base.mock;
 
 import com.lazzy.base.BaseApplication;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class MockTests {
     public void strEmpty(){
         Mockito.when(mock.isEmpty(Mockito.anyString())).thenReturn(true);
         log.info("result:{}",strService.empty("test"));
+        Assertions.assertTrue(strService.empty("test"));
     }
 
     @Test
@@ -34,5 +36,6 @@ public class MockTests {
         Mockito.doNothing().when(mock).hasThrow();
         Mockito.when(mock.isEmpty(Mockito.anyString())).thenReturn(true);
         log.info("result:{}",strService.hasThrow("test"));
+        Assertions.assertTrue(strService.hasThrow("test"));
     }
 }
