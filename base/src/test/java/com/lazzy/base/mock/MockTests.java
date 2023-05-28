@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
  * mockito 测试框架
  * 1. springboot 测试框架 适合组件注入mock的情形
  * 2. 无法mock 静态方法 final方法 私有方法 函数内创建的对象...等等情况
+ * mockito org.junit.jupiter.api.Test 要使用者这个注解，junit.test 不能混用
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = BaseApplication.class)
 @Slf4j

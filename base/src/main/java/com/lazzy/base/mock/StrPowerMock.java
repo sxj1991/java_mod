@@ -1,5 +1,6 @@
 package com.lazzy.base.mock;
 
+import com.lazzy.base.mock.entity.Connect;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
@@ -40,5 +41,27 @@ public class StrPowerMock {
      */
     public static String staticHasThrowStr(){
         throw new RuntimeException("静态方法没有mock成功");
+    }
+
+    /**
+     * mock 函数中有对象的情况
+     */
+    public String newObjectMock(){
+        Connect connect = new Connect();
+        if(connect.getConnected()){
+            throw new RuntimeException("对象方法没有mock成功");
+        }
+        return "mock 成功";
+    }
+
+    /**
+     * mock 函数中有对象的情况且是static方法
+     */
+    public static String newStaticObjectMock(){
+        Connect connect = new Connect();
+        if(connect.getConnected()){
+            throw new RuntimeException("对象方法没有mock成功");
+        }
+        return "static new mock 成功";
     }
 }
