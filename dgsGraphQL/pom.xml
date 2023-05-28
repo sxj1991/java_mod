@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>Dgs_graphQL</artifactId>
+	<artifactId>DgsGraphQL</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Dgs_graphQL</name>
-	<description>Dgs_graphQL</description>
+	<name>DgsGraphQL</name>
+	<description>DgsGraphQL</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
