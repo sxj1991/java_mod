@@ -24,9 +24,5 @@ public class AuthController {
         response.addHeader("Auth-Status","OK");
         response.addHeader("Auth-Server","smtp.163.com");
         response.addHeader("Auth-Port","25");
-        response.addHeader("Auth-User", user);
-        response.addHeader("Auth-Pass", pass);
-
-
     }
 }
