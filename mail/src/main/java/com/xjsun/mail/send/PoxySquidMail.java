@@ -15,15 +15,15 @@ public class PoxySquidMail {
     public static void main(String[] args) throws MessagingException, GeneralSecurityException {
         //设置代理服务器
         Properties props = System.getProperties();
-        props.setProperty("mail.smtp.host", "smtp.163.com");
+        props.put("mail.smtp.host", "smtp.163.com");
         props.put("mail.smtp.port", "25");
         props.put("mail.smtp.auth", "true");
         props.put("mail.debug", "true");
         // 设置邮件服务器主机名
-        props.setProperty("mail.proxy.host", "127.0.0.1");
-        props.setProperty("mail.proxy.port", "3128");
-        props.setProperty("mail.protocol.proxy.user", "test");
-        props.setProperty("mail.protocol.proxy.password", "test");
+        props.setProperty("mail.smtp.proxy.host", "127.0.0.1");
+        props.setProperty("mail.smtp.proxy.port", "8080");
+        props.setProperty("mail.smtp.proxy.user", "user");
+        props.setProperty("mail.smtp.proxy.password", "pass");
 
 
         MailSSLSocketFactory sf = new MailSSLSocketFactory();
@@ -44,7 +44,7 @@ public class PoxySquidMail {
 
         Transport transport = session.getTransport();
         //邮件服务器、发送邮箱账号、第三方验证码
-        transport.connect( "xxx@163.com", "123");
+        transport.connect( "xxx@163.com", "pass");
         transport.sendMessage(message, new Address[] { new InternetAddress("xxx@163.com") });
         transport.close();
         log.info("邮件发送！");
