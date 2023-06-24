@@ -1,0 +1,6 @@
+server:
+  port: 8088
+
+# k8s httpApi调用地址
+k8s:
+  url: http://127.0.0.1:50139
