@@ -2,5 +2,6 @@ server:
   port: 8088
 
 # k8s httpApi调用地址
+# 启动台命令指定端口 minikube dashboard --port 8666
 k8s:
-  url: http://127.0.0.1:50139
+  url: http://127.0.0.1:8666
