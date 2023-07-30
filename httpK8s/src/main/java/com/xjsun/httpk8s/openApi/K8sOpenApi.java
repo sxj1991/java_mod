@@ -19,6 +19,6 @@ public class K8sOpenApi {
     public String findK8sVersion(){
         MultiValueMap<String, String> headers = new HttpHeaders();
         MultiValueMap<String, String> params = new HttpHeaders();
-        return HttpUtil.get(url+"/api",params,headers);
+        return HttpUtil.get(url+"/api/v1/namespaces/default/pods",params,headers);
     }
 }

@@ -3,7 +3,7 @@ package com.lazzy.base.juc.thread_pool;
 import java.util.concurrent.*;
 
 public final class WorkFactory {
-    private static ExecutorService executor = new ThreadPoolExecutor(4,
+    private static final ExecutorService executor = new ThreadPoolExecutor(4,
             20,200, TimeUnit.MILLISECONDS,new LinkedBlockingQueue<>());
 
     private WorkFactory(){}
