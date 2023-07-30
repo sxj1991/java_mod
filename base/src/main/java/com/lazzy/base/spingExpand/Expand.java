@@ -8,10 +8,19 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -93,6 +102,65 @@ public class Expand {
             return true;
         }
     }
+
+    /**
+     * WebMvcConfigurerAdapter  类过时
+     * WebMvcConfigurer 替代接口
+     */
+    @Configuration
+    public static class WebAuthConfig implements WebMvcConfigurer {
+
+        @Bean
+        public AuthInterceptor getAuthInterceptor() {
+            return new AuthInterceptor();
+        }
+
+        /**
+         * 自定义的拦截器 添加到拦截器链中
+         * @param registry 注册器
+         */
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(new AuthInterceptor());
+        }
+    }
+
+    /**
+     * 通过监听器过取容器对象
+     * 同时也可以扩展这个监听器类，实现监听者模式
+     */
+    @Service
+    public static class PersonService implements ApplicationListener<ContextRefreshedEvent> {
+        private ApplicationContext applicationContext;
+        @Override
+        public void onApplicationEvent(ContextRefreshedEvent event) {
+            applicationContext = event.getApplicationContext();
+        }
+
+        public void add() {
+            Object person =  applicationContext.getBean("person");
+        }
+    }
+
+    /**
+     * 全局异常处理类
+     * 根据异常类信息全局捕获统一处理向上抛出未处理的异常
+     */
+    @RestControllerAdvice
+    public static class GlobalExceptionHandler {
+
+        @ExceptionHandler(Exception.class)
+        public String handleException(Exception e) {
+            if (e instanceof ArithmeticException) {
+                return "数据异常";
+            }
+            if (e != null) {
+                return "服务器内部异常";
+            }
+            return "";
+        }
+    }
+
 
     /**
      * User未交给IOC容器管理 通过import导入bean由spring创建
