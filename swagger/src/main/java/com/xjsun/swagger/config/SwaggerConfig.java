@@ -21,6 +21,7 @@ import java.util.Set;
  * swagger配置类 配置扫描的路径和基础信息
  * 启动报错 ： 使用EnableWebMvc注解 启用Spring MVC框架的默认配置或者配置文件配置匹配信息
  *（目的是解决因为springboot新版本的路径匹配使用了PathPatternParser，而swagger一直没有更新，还使用的AntPathMatcher）
+ * 访问地址： /swagger-ui/index.html#/
  */
 @Configuration
 @EnableOpenApi
