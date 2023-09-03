@@ -12,5 +12,26 @@
 
 ### 项目模块介绍
 
-JAVA 基础知识：[Java Base](/base/README.md)
+#### 一、基础知识类：
+> 主要包括内容：
+> 1. JUC并发编程笔记
+> 2. 设计模式笔记以及基础实现
+> 3. 单元测试以及mock框架使用
+> 4. Spring框架扩展接口笔记
+> 5. Java最佳实践
+
+:muscle:详情文档:[Java Base](/base/README.md)
+
+#### 二、数据库框架mybatis集成
+> 主要包括内容：
+> 1. 多数据源mybatis使用
+> 2. mybatis 数据库关系映射（一对多、多对多）
+> 3. mybatis 分页实现
+> 4. mybatis 配置
+
+:cloud:详情文档:[Java Mybatis](/mybatisJasypt/README.md)
+
+
+
+
 
