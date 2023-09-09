@@ -1,2 +1,9 @@
 mail:
-  url: xxx
+  url: xxx@gmail.com
+
+custom:
+  config:
+    host: 127.0.0.1
+    port: 9090
+    name: xxx
+    password:

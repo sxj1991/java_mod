@@ -1,4 +1,4 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://mongo:123456@ip:port/template_mongo
+      uri: mongodb://own:123456@8.136.0.80:9999/template_mongo

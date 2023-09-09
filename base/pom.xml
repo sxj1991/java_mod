@@ -82,6 +82,12 @@
             <version>2.0.9</version>
             <scope>test</scope>
         </dependency>
+        <!-- 配置元信息 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
