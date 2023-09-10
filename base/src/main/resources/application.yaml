@@ -6,4 +6,4 @@ custom:
     host: 127.0.0.1
     port: 9090
     name: xxx
-    password:
+    password: 123
