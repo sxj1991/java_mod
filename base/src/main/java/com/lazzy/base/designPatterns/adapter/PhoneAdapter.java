@@ -22,6 +22,7 @@ public class PhoneAdapter implements IPhoneSend{
     @Override
     public void send(Integer phoneNumber) {
         System.out.println("手机适配邮件功能");
+        // 使用适配器模式让新接口可传入integer类型数据
         mailSend.send(Integer.toString(phoneNumber));
     }
 }
