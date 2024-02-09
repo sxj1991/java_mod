@@ -1,7 +1,7 @@
 package com.lazzy.base.design;
 
-import com.lazzy.base.designPatterns.Iterator.Iterator;
-import com.lazzy.base.designPatterns.Iterator.StudentList;
+import com.lazzy.base.designPatterns.iterator.Iterator;
+import com.lazzy.base.designPatterns.iterator.StudentList;
 import com.lazzy.base.designPatterns.adapter.IPhoneSend;
 import com.lazzy.base.designPatterns.adapter.MailSend;
 import com.lazzy.base.designPatterns.adapter.PhoneAdapter;

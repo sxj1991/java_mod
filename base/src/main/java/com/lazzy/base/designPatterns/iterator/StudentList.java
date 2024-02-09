@@ -1,4 +1,4 @@
-package com.lazzy.base.designPatterns.Iterator;
+package com.lazzy.base.designPatterns.iterator;
 
 import java.util.List;
 
