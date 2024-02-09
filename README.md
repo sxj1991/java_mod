@@ -62,6 +62,11 @@
 
 :cloud:详情文档:[Java Mybatis](/mybatisJasypt/README.md)
 
+#### 三、程序部署
+> 执行git clone https://github.com/sxj1991/java_mod.git 指令
+> 安装maven依赖管理包，配置maven，下载依赖
+> 程序分成多个module，更新yaml配置必要数据库信息，启动application 主类即可进行学习调试。
+
 
 
 
