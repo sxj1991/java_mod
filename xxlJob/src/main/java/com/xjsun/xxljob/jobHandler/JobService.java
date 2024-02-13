@@ -24,7 +24,13 @@ public class JobService {
 
 
     /**
-     * 1、简单任务示例（Bean模式）
+     * 简单任务示例（Bean模式）
+     * 验证xxl-job 后端api如何实现选择执行器流程
+     * 1. 调度任务时，会根据主键id查询jobInfo对象
+     * 2. jobInfo逻辑外键关联者自己所属的jobGroup对象
+     * 3. jobGroup对象中包含了执行器信息、机器地址(逗号分割字符串，可存储多个地址)
+     * 4. 根据jobGroup对象查询地址信息和jobInfo参数信息反射方式调度任务执行
+     *
      */
     @XxlJob("simpleJobHandler")
     public void jobHandler() throws Exception {
