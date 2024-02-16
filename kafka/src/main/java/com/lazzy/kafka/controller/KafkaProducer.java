@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,12 +33,13 @@ public class KafkaProducer {
 
     // 发送消息
     @GetMapping("/kafka/normal/{message}")
-    public String sendMessage(@PathVariable("message") String normalMessage) {
+    public String sendMessage(@PathVariable("message") String normalMessage) throws InterruptedException {
         //向消息队列发送信息
         // 创建线程池
         ExecutorService threadPool = Executors.newFixedThreadPool(10);
-        // 执行 10 次时间格式化
+        // 模拟10个生产者不同时间节点向消费者发信息，根据生产者顺序整理信息
         for (int i = 0; i < 10; i++) {
+            Thread.sleep(new Random().nextInt(10)*100);
             // 线程池执行任务
             threadPool.execute(() -> {
                 // 执行时间格式化并打印结果
