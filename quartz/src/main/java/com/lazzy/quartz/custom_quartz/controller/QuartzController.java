@@ -1,12 +1,11 @@
-package com.lazzy.quartz.ruoyi_quartz.controller;
+package com.lazzy.quartz.custom_quartz.controller;
 
-import com.lazzy.quartz.ruoyi_quartz.common.ScheduleConstants;
-import com.lazzy.quartz.ruoyi_quartz.entity.SysJob;
-import com.lazzy.quartz.ruoyi_quartz.task.ScheduleUtils;
+import com.lazzy.quartz.custom_quartz.common.ScheduleConstants;
+import com.lazzy.quartz.custom_quartz.entity.SysJob;
+import com.lazzy.quartz.custom_quartz.task.ScheduleUtils;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**

@@ -1,8 +1,8 @@
-package com.lazzy.quartz.ruoyi_quartz.invoke;
+package com.lazzy.quartz.custom_quartz.invoke;
 
 
-import com.lazzy.quartz.ruoyi_quartz.entity.SysJob;
-import com.lazzy.quartz.ruoyi_quartz.util.SpringUtils;
+import com.lazzy.quartz.custom_quartz.entity.SysJob;
+import com.lazzy.quartz.custom_quartz.util.SpringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.CronExpression;
 import org.springframework.util.ObjectUtils;
@@ -17,7 +17,6 @@ import java.util.List;
 /**
  * 任务执行工具
  *
- * @author ruoyi
  */
 public class JobInvokeUtil
 {

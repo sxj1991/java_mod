@@ -1,13 +1,12 @@
-package com.lazzy.quartz.ruoyi_quartz.task;
+package com.lazzy.quartz.custom_quartz.task;
 
-import com.lazzy.quartz.ruoyi_quartz.entity.SysJob;
-import com.lazzy.quartz.ruoyi_quartz.invoke.JobInvokeUtil;
+import com.lazzy.quartz.custom_quartz.entity.SysJob;
+import com.lazzy.quartz.custom_quartz.invoke.JobInvokeUtil;
 import org.quartz.JobExecutionContext;
 
 /**
  * 定时任务处理（允许并发执行）
- * 
- * @author ruoyi
+ *
  *
  */
 public class QuartzJobExecution extends AbstractQuartzJob{

@@ -1,8 +1,8 @@
-package com.lazzy.quartz.ruoyi_quartz.task;
+package com.lazzy.quartz.custom_quartz.task;
 
-import com.lazzy.quartz.ruoyi_quartz.common.ScheduleConstants;
-import com.lazzy.quartz.ruoyi_quartz.entity.SysJob;
-import com.lazzy.quartz.ruoyi_quartz.invoke.JobInvokeUtil;
+import com.lazzy.quartz.custom_quartz.common.ScheduleConstants;
+import com.lazzy.quartz.custom_quartz.entity.SysJob;
+import com.lazzy.quartz.custom_quartz.invoke.JobInvokeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
@@ -19,8 +19,6 @@ import org.springframework.util.ObjectUtils;
 
 /**
  * 定时任务工具类
- * 
- * @author ruoyi
  *
  */
 @Slf4j

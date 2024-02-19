@@ -1,4 +1,4 @@
-package com.lazzy.quartz.ruoyi_quartz.task;
+package com.lazzy.quartz.custom_quartz.task;
 
 import org.springframework.stereotype.Component;
 

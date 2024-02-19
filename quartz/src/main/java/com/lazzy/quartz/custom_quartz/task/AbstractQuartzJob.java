@@ -1,9 +1,9 @@
-package com.lazzy.quartz.ruoyi_quartz.task;
+package com.lazzy.quartz.custom_quartz.task;
 
 import java.util.Date;
 
-import com.lazzy.quartz.ruoyi_quartz.common.ScheduleConstants;
-import com.lazzy.quartz.ruoyi_quartz.entity.SysJob;
+import com.lazzy.quartz.custom_quartz.common.ScheduleConstants;
+import com.lazzy.quartz.custom_quartz.entity.SysJob;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

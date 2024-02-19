@@ -1,9 +1,8 @@
-package com.lazzy.quartz.ruoyi_quartz.common;
+package com.lazzy.quartz.custom_quartz.common;
 
 /**
  * 任务调度通用常量
- * 
- * @author ruoyi
+ *
  */
 public class ScheduleConstants
 {

@@ -1,19 +1,16 @@
-package com.lazzy.quartz.ruoyi_quartz.entity;
+package com.lazzy.quartz.custom_quartz.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.lazzy.quartz.ruoyi_quartz.common.ScheduleConstants;
-import com.lazzy.quartz.ruoyi_quartz.invoke.JobInvokeUtil;
+import com.lazzy.quartz.custom_quartz.common.ScheduleConstants;
+import com.lazzy.quartz.custom_quartz.invoke.JobInvokeUtil;
 import lombok.Data;
-import org.quartz.CronExpression;
 import org.springframework.util.StringUtils;
 
-import java.text.ParseException;
 import java.util.Date;
 
 /**
  * 定时任务调度表 sys_job
- * 
- * @author ruoyi
+ *
  */
 @Data
 public class SysJob
