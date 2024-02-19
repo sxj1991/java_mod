@@ -23,7 +23,7 @@ public class QuartzController {
     }
 
     /**
-     * TODO 查询数据库 定时任务数据
+     * 查询数据库 定时任务数据
      *
      * @return
      */
@@ -42,15 +42,13 @@ public class QuartzController {
     /**
      * 更新操作 会删除之前的任务 重新创建 本质就是重新创建任务
      * @param job
-     * @param jobGroup
      * @return
      * @throws SchedulerException
      */
     @PutMapping("cron")
-    public String updateSchedulerJob(@RequestBody SysJob job, String jobGroup) throws SchedulerException {
-        Long jobId = job.getJobId();
+    public String updateSchedulerJob(@RequestBody SysJob job) throws SchedulerException {
         // 判断是否存在
-        JobKey jobKey = ScheduleUtils.getJobKey(jobId, jobGroup);
+        JobKey jobKey = ScheduleUtils.getJobKey(job.getJobId(), job.getJobGroup());
         if (scheduler.checkExists(jobKey)) {
             // 防止创建时存在数据问题 先移除，然后在执行创建操作
             scheduler.deleteJob(jobKey);

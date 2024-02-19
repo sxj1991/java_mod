@@ -14,7 +14,6 @@ import org.springframework.beans.BeanUtils;
 /**
  * 抽象quartz调用
  *
- * @author ruoyi
  */
 public abstract class AbstractQuartzJob implements Job
 {
