@@ -25,27 +25,38 @@ public abstract class AbstractQuartzJob implements Job
     private static ThreadLocal<Date> threadLocal = new ThreadLocal<>();
 
     @Override
-    public void execute(JobExecutionContext context) throws JobExecutionException
-    {
+    public void execute(JobExecutionContext context) throws JobExecutionException {
         SysJob sysJob = new SysJob();
-        // 获取jobDetail.getJobDataMap().put(ScheduleConstants.TASK_PROPERTIES, job)放入的sysjob对象
+        // 获取jobDetail.getJobDataMap().put(ScheduleConstants.TASK_PROPERTIES, job)放入的对象
         SysJob taskData = (SysJob) context.getMergedJobDataMap().get(ScheduleConstants.TASK_PROPERTIES);
         BeanUtils.copyProperties(taskData,sysJob);
-        try
-        {
-
-            if (sysJob != null) {
-                doExecute(context, sysJob);
-            }
-
+        try {
+            // 静态代理 对执行方法增强
+            before(sysJob);
+            doExecute(context, sysJob);
+            after(sysJob,null);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             log.error("任务执行异常  - ：", e);
+            after(sysJob, e);
         }
     }
 
+    /**
+     * 用于执行前日志或者检查
+     * @param sysJob 定时任务对象
+     */
+    private void before(SysJob sysJob){
 
+    }
+
+    /**
+     * 执行完毕执行日志或者监控告警
+     * @param sysJob
+     */
+    private void after(SysJob sysJob, Exception exception){
+
+    }
 
 
     /**

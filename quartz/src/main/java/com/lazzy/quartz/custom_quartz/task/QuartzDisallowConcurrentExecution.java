@@ -6,12 +6,13 @@ import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobExecutionContext;
 
 /**
- * 定时任务处理（允许并发执行）
+ * 定时任务处理（禁止并发执行）
+ * DisallowConcurrentExecution 阻止定时器并行执行
  *
  */
-public class QuartzJobExecution extends AbstractQuartzJob{
-
-    //quartz 会执行该方法
+@DisallowConcurrentExecution
+public class QuartzDisallowConcurrentExecution extends AbstractQuartzJob
+{
     @Override
     protected void doExecute(JobExecutionContext context, SysJob sysJob) throws Exception
     {

@@ -41,6 +41,9 @@ public class SysJob
     /** 任务状态（0正常 1暂停） */
     private String status;
 
+    /** 任务超时时间 */
+    private int timeOut;
+
 
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
