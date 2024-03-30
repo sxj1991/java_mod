@@ -3,10 +3,13 @@ package com.lazzy.quartz.custom_quartz.controller;
 import com.lazzy.quartz.custom_quartz.common.ScheduleConstants;
 import com.lazzy.quartz.custom_quartz.entity.SysJob;
 import com.lazzy.quartz.custom_quartz.task.ScheduleUtils;
-import org.quartz.JobKey;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
+import org.quartz.*;
+import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * quartz定时器控制层
@@ -26,9 +29,21 @@ public class QuartzController {
      *
      * @return
      */
-    @GetMapping
-    public String getSchedulerJob(){
-        return "success";
+    @GetMapping("cron")
+    public List<SysJob>  getSchedulerJob() throws SchedulerException {
+        Set<JobKey> jobKeys = scheduler.getJobKeys(GroupMatcher.anyJobGroup());
+        List<SysJob> sysJobs = new ArrayList<>();
+        // 遍历作业键，并获取作业的详细信息
+        for (JobKey jobKey : jobKeys) {
+            JobDataMap jobDataMap = scheduler.getJobDetail(jobKey).getJobDataMap();
+            for (String key : jobDataMap.keySet()) {
+               Object o = jobDataMap.get(key);
+               if(o instanceof SysJob){
+                   sysJobs.add((SysJob) o);
+               }
+            }
+        }
+        return sysJobs;
     }
 
     @PostMapping("cron")
