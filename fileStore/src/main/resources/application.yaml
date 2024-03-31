@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: FileStore
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+remote:
+  host: 127.0.0.1
+  port: 22
+  username: admin
+  password: 123456
+  file-path: /
+
+
+
