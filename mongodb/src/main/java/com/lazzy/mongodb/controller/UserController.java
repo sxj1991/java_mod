@@ -4,6 +4,7 @@ import com.lazzy.base.sdk.LogExecute;
 import com.lazzy.mongodb.controller.vo.Response;
 import com.lazzy.mongodb.dao.UserDao;
 import com.lazzy.mongodb.entity.Comment;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ public class UserController {
     }
 
     @PutMapping("comment")
+    @Transactional(transactionManager = "mongoTransactionManager")
     public Response<?> update(@RequestBody Comment comment) {
         updateReply(comment);
         userDao.updateComment(comment);
