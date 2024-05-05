@@ -20,6 +20,7 @@ public class MongodbConfig {
      *
      * @param factory 工厂
      * @return 事务管理器
+     * 解决mysql事务同时使用冲突 注入不同的bean name
      */
     @Bean("mongoTransactionManager")
     public MongoTransactionManager transactionManager(MongoDatabaseFactory factory) {
