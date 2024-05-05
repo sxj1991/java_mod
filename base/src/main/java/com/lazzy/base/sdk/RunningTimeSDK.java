@@ -34,7 +34,7 @@ public class RunningTimeSDK extends AbstractPointcutAdvisor implements Initializ
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        this.pointcut = new AnnotationMatchingPointcut(null, LogExcute.class);
+        this.pointcut = new AnnotationMatchingPointcut(null, LogExecute.class);
         this.advice = new LogAdvice();
     }
 }

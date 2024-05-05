@@ -1,5 +1,6 @@
 package com.lazzy.mongodb.config;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
@@ -12,8 +13,7 @@ import org.springframework.data.mongodb.core.convert.MongoConverter;
 /**
  * @author xjsun
  * @version 1.0
- * @date 2020/02/16 11:22
- * @desc: 监听mongo 保存数据
+ * 监听mongo 保存数据
  * 此类若不加，那么插入的一行会默认添加一个_class字段来存储实体类类型 如（com.example.demo.entity.Student）
  */
 @Configuration
@@ -28,7 +28,7 @@ public class ApplicationReadyListener implements ApplicationListener<ContextRefr
   }
 
   @Override
-  public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+  public void onApplicationEvent(@NotNull ContextRefreshedEvent contextRefreshedEvent) {
     MongoConverter converter = oneMongoTemplate.getConverter();
     if (converter.getTypeMapper().isTypeKey(TYPEKEY)) {
       ((MappingMongoConverter) converter).setTypeMapper(new DefaultMongoTypeMapper(null));

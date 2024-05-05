@@ -1,6 +1,6 @@
 package com.lazzy.base.auth.controller;
 
-import com.lazzy.base.sdk.LogExcute;
+import com.lazzy.base.sdk.LogExecute;
 import com.lazzy.base.sdk.PermissionCheck;
 import com.lazzy.base.token.JwtToken;
 import com.lazzy.base.token.LocalCache;
@@ -13,7 +13,7 @@ import java.util.Date;
 public class TokenController {
 
     @GetMapping("createTk")
-    @LogExcute
+    @LogExecute
     @PermissionCheck("@auth.permission('system:permission:add')")
     public JwtToken create(){
         String id = "1";

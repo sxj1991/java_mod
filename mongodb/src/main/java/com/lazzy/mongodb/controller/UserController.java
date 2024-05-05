@@ -1,9 +1,8 @@
 package com.lazzy.mongodb.controller;
 
-import com.lazzy.base.sdk.LogExcute;
+import com.lazzy.base.sdk.LogExecute;
 import com.lazzy.mongodb.dao.UserDao;
-import com.lazzy.mongodb.entity.Student;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.lazzy.mongodb.entity.Comment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,21 +16,20 @@ public class UserController {
     }
 
     @PostMapping("u")
-    public String add(@RequestBody Student stu){
-        userDao.insertStudent(stu);
+    public String add(@RequestBody Comment comment){
+        userDao.insertComment(comment);
         return "yes";
     }
 
     @PutMapping("u")
-    public String update(@RequestBody Student stu){
-        userDao.updateStudent(stu);
+    public String update(@RequestBody Comment comment){
+        userDao.updateComment(comment);
         return "yes";
     }
 
     @GetMapping("u")
-    @LogExcute
-    public List<Student> query(){
-
+    @LogExecute
+    public List<Comment> query(){
         return userDao.findAll();
     }
 }

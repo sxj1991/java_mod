@@ -18,7 +18,7 @@ public class LogAdvice implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
-        LogExcute execute = methodInvocation.getMethod().getAnnotation(LogExcute.class);
+        LogExecute execute = methodInvocation.getMethod().getAnnotation(LogExecute.class);
        //如果该注解为null则直接放行
         if (execute==null){
             return methodInvocation.proceed();

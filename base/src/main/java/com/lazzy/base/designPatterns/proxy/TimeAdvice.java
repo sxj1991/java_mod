@@ -1,6 +1,6 @@
 package com.lazzy.base.designPatterns.proxy;
 
-import com.lazzy.base.sdk.LogExcute;
+import com.lazzy.base.sdk.LogExecute;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 public class TimeAdvice {
     private static final Logger LOGGER =(Logger) LoggerFactory.getLogger(TimeAdvice.class);
     /** 切点 */
-    @Pointcut("@annotation(com.lazzy.base.sdk.LogExcute)")
+    @Pointcut("@annotation(com.lazzy.base.sdk.LogExecute)")
     public void pointcut() {
 
     }
@@ -38,7 +38,7 @@ public class TimeAdvice {
         try {
             Class<?>[] parameterTypes = ((MethodSignature) joinPoint.getSignature()).getMethod().getParameterTypes();
             Method method = aClass.getMethod(methodName, parameterTypes);
-            LogExcute annotation = method.getAnnotation(LogExcute.class);
+            LogExecute annotation = method.getAnnotation(LogExecute.class);
             if (ObjectUtils.isEmpty(annotation)) {
                 return joinPoint.proceed();
             }
