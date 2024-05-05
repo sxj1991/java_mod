@@ -1,4 +1,4 @@
-package com.lazzy.mongodb.entity;
+package com.lazzy.mongodb.controller.vo;
 
 import lombok.Data;
 
