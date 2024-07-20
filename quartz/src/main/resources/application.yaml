@@ -6,3 +6,6 @@ spring:
     password: password
     username: username
     driver-class-name: com.mysql.jdbc.Driver
+arthas:
+  agent-id: pass
+  tunnel-server: ws://127.0.0.1:7777/ws
