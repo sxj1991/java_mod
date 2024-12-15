@@ -12,6 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
+import com.jcraft.jsch.*;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.util.Properties;
+
 @Service
 public class FileUploadService {
 
@@ -29,6 +36,12 @@ public class FileUploadService {
 
     @Value("${remote.file-path}")
     private String filePath;
+
+    @Value("${remote.speed}")
+    private Integer speed;
+
+    // 限速为 50 KB/s
+    private final long MAX_BYTES_PER_SECOND = speed * 1024;
 
     public void fileUpload(MultipartFile file, UploadType type) throws Exception {
         if (ObjectUtils.isEmpty(file)) {
@@ -86,6 +99,7 @@ public class FileUploadService {
             case FLAG_FILE -> UploadUtil.flagUploadFile(channel, bytes, filePath, file.getOriginalFilename());
             case INTERMEDIATE_FILE_NAME ->
                     UploadUtil.middleUploadFile(channel, bytes, filePath, file.getOriginalFilename());
+            case LIMIT_SPEED -> UploadUtil.limitSpeed(channel, bytes, filePath, file.getOriginalFilename(), MAX_BYTES_PER_SECOND);
             default -> throw new RuntimeException("不存在的上传方式");
         }
     }

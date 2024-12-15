@@ -2,10 +2,9 @@ package com.xjsun.filestore.util;
 
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.SftpException;
+import com.jcraft.jsch.SftpProgressMonitor;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.UUID;
 
 public final class UploadUtil {
@@ -16,6 +15,9 @@ public final class UploadUtil {
 
 
     private final static String MIDDLE_FILE_NAME = "_middle_";
+
+    // 10 KB 缓冲区
+    private final static int BUFFER_SIZE = 1024 * 10;
 
     private UploadUtil() {
         throw new RuntimeException("工具类不需要直接创建");
@@ -43,13 +45,82 @@ public final class UploadUtil {
      */
     public static void middleUploadFile(ChannelSftp channel, byte[] fileBytes, String filePath, String fileName)
             throws SftpException {
+        String middleName = filePath + SEPARATING + fileName + MIDDLE_FILE_NAME + UUID.fromString(fileName);
         // 上传文件
-        channel.put(new ByteArrayInputStream(fileBytes),
-                filePath + SEPARATING + fileName + MIDDLE_FILE_NAME + UUID.fromString(fileName));
+        channel.put(new ByteArrayInputStream(fileBytes), middleName);
         // 上传成功修改原始文件名
-        channel.rename(filePath + SEPARATING + fileName + MIDDLE_FILE_NAME + UUID.fromString(fileName),
-                filePath + SEPARATING + fileName);
+        channel.rename(middleName, filePath + SEPARATING + fileName);
     }
 
+    /**
+     * 设置文件上传速度
+     * @param channel
+     * @param fileBytes
+     * @param filePath
+     * @param fileName
+     * @param MAX_BYTES_PER_SECOND
+     */
+    public static void limitSpeed(ChannelSftp channel, byte[] fileBytes, String filePath, String fileName,
+                                  long MAX_BYTES_PER_SECOND) {
+        UploadMonitor monitor = new UploadMonitor(fileBytes.length);
 
+        try (OutputStream os = channel.put(filePath + SEPARATING + fileName, monitor, ChannelSftp.OVERWRITE);
+             InputStream fis = new ByteArrayInputStream(fileBytes)) {
+
+            byte[] buff = new byte[BUFFER_SIZE];
+            int read;
+            long startTime = System.currentTimeMillis();
+            long bytesTransferred = 0;
+
+            while ((read = fis.read(buff)) != -1) {
+                os.write(buff, 0, read);
+                os.flush();
+                bytesTransferred += read;
+
+                // 控制传输速度
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                if (elapsedTime > 0) {
+                    long expectedTime = (bytesTransferred * 1000) / MAX_BYTES_PER_SECOND;
+                    if (expectedTime > elapsedTime) {
+                        Thread.sleep(expectedTime - elapsedTime);
+                    }
+                }
+            }
+            // 确保最后的数据写入完成
+            os.flush();
+        } catch (SftpException | InterruptedException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 上传进度监控器类
+     */
+    static class UploadMonitor implements SftpProgressMonitor {
+        private final long maxBytes;
+        private long bytesTransferred;
+
+        public UploadMonitor(long maxBytes) {
+            this.maxBytes = maxBytes;
+            this.bytesTransferred = 0;
+        }
+
+        @Override
+        public void init(int op, String src, String dest, long max) {
+            System.out.println("开始上传: " + src + " 到" + dest);
+        }
+
+        @Override
+        public boolean count(long count) {
+            bytesTransferred += count;
+            System.out.printf("上传字节:\r", bytesTransferred, maxBytes);
+            return true;
+        }
+
+        @Override
+        public void end() {
+            System.out.println("\n上传完毕");
+        }
+
+    }
 }
