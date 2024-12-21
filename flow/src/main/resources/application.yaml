@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: flow
+liteflow:
+  rule-source: classpath:flow.yml

@@ -1,0 +1,14 @@
+# 工作流编排配置
+flow:
+  nodes:
+    node:
+      - id: a
+        class: com.xjsun.flow.config.ACmp
+      - id: b
+        class: com.xjsun.flow.config.BCmp
+      - id: c
+        class: com.xjsun.flow.config.CCmp
+  chain:
+    - name: liteChain
+      # 串行a 并行bc
+      value: "THEN(a, WHEN(b,c))"
