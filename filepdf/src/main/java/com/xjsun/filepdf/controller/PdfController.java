@@ -1,7 +1,8 @@
 package com.xjsun.filepdf.controller;
 
-import com.example.demo.dto.GeneratePdfRequest;
-import com.example.demo.service.PdfService;
+
+import com.xjsun.filepdf.dto.GeneratePdfRequest;
+import com.xjsun.filepdf.service.PdfService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
